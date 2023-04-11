@@ -15,7 +15,9 @@ For this assignment some assumptions were made:
 
 1. Clone this repository (https://github.com/sargentlu/pltsci-sdet-assignment.git)
 2. Checkout the `test-robot-cleanup` branch
-3. Run the tests (`npx codeceptjs run`)
+3. Move to the `tests` directory
+4. Run `npm install` to install dependencies
+5. Run the tests (`npx codeceptjs run`)
 
 ## Test results
 
