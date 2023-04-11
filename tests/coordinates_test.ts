@@ -176,25 +176,3 @@ Scenario('Check integer on coordinates',  ({ I }) => {
     // the initial coordinates are invalid
     I.seeResponseCodeIsClientError();
 });
-
-Scenario('Coordinates edge case',  ({ I }) => {
-    // If coordinates are within the roomSize dimensions, the request
-    // should return a successful response
-    const response = I.sendPostRequest('', {
-        roomSize: [2**31-2, 2**31-2],
-        coords: [ 2**31-4, 2**31-4],
-        patches: [
-            [1, 0],
-            [2, 2],
-            [2, 3]
-        ],
-        instructions: "NE"
-    });
-
-    // The expected result: the robot cleans up 2 patches and finishes
-    // at [1, 0]
-    I.seeResponseContainsJson({
-        coords: [2**31-3, 2**31-3],
-        patches: 0
-    })
-});

@@ -1,6 +1,6 @@
 Feature('Robot cleanup - Patches');
 
-Scenario('Coordinates example request',  ({ I }) => {
+Scenario('Patches example request',  ({ I }) => {
     // If coordinates are within the roomSize dimensions, the request
     // should return a successful response
     const response = I.sendPostRequest('', {
@@ -57,8 +57,9 @@ Scenario('Use a string for patch coordinates',  ({ I }) => {
     I.seeResponseCodeIsClientError();
 });
 
-Scenario('Use an array with fewer elements than expected for coordinates',  ({ I }) => {
-    // Send payload with a single coordinate instead of the expected 2
+Scenario('Use an array with fewer elements than expected for patches',  ({ I }) => {
+    // Send payload with patches that contain a single coordinate
+    // instead of the expected 2
     const response = I.sendPostRequest('', {
         roomSize: [5, 5],
         coords: [1],
@@ -70,7 +71,7 @@ Scenario('Use an array with fewer elements than expected for coordinates',  ({ I
         instructions: "NEWSSS"
     });
 
-    // The request should return a client error as coordinates
+    // The request should return a client error as patch coordinates
     // should be an array with 2 elements
     I.seeResponseCodeIsClientError();
 });
